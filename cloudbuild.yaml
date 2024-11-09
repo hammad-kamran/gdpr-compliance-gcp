@@ -1,9 +1,8 @@
 steps:
-  # Step 1: Verify Data Residency Compliance for Cloud SQL
+  # Step 1: Describe SQL instance for verification
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['sql', 'instances', 'describe', 'europe-sql-db', '--format=json']
+    args: ['sql', 'instances', 'describe', 'europe-sql-db']
     id: 'verify-sql-instance'
-    waitFor: ["-"]
 
   # Step 2: Verify Other Resources if Necessary
   # You can add additional steps here to check other resources or configurations
