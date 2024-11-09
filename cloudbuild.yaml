@@ -2,9 +2,10 @@ steps:
   # Step 1: Deploy Infrastructure with Terraform
   - name: 'gcr.io/cloud-builders/terraform'
     args: ['apply', '-auto-approve']
+  
   # Step 2: Verify EU Data Residency Compliance for Cloud SQL
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['sql', 'instances', 'describe', 'europe-sql-db']
-    # Optional substitution to verify region
-  substitutions:
-    _EU_REGION: "europe-west1"
+
+substitutions:
+  _EU_REGION: "europe-west1"
