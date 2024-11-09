@@ -2,10 +2,14 @@ steps:
   # Step 1: Deploy Infrastructure with Terraform
   - name: 'gcr.io/cloud-builders/terraform'
     args: ['apply', '-auto-approve']
-  
+ 
   # Step 2: Verify EU Data Residency Compliance for Cloud SQL
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['sql', 'instances', 'describe', 'europe-sql-db']
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+  default_logs_bucket_behavior: REGIONAL_USER_OWNED_BUCKET
 
 substitutions:
   _EU_REGION: "europe-west1"
